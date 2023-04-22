@@ -23,6 +23,9 @@ jobs:
     - name: Git checkout release
       run: git checkout release 
 
+    - name: Git pull release
+      run: git pull origin release 
+
     - name: Git config username
       run: git config user.email '${{secrets.GIT_EMAIL}}'
 
