@@ -29,11 +29,11 @@ jobs:
     - name: Git config password
       run: git config --global user.name '${{secrets.GIT_NAME}}'
 
-    - name: Git config pull
-      run: git config pull.rebase true
+    # - name: Git config pull
+    #   run: git config pull.rebase true
 
-    - name: Git pull release
-      run: git pull origin release 
+    - name: Git fetch release
+      run: git fetch origin release 
 
     - name: Git push 
       run: git push -u origin release
