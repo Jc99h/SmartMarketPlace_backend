@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     # Se hace este checkout para que podamos encontrar los archivos que tenemos en develop
-    - uses: actions/checkout@develop
+    - uses: actions/checkout@v3
 
     # - name: Check tests status
     #   run: python app/test_utils.py
