@@ -23,14 +23,14 @@ jobs:
     - name: Git checkout release
       run: git checkout release 
 
-    - name: Git pull release
-      run: git pull origin release 
-
     - name: Git config username
       run: git config --global user.email '${{secrets.GIT_EMAIL}}'
 
     - name: Git config password
       run: git config --global user.name '${{secrets.GIT_NAME}}'
+
+    - name: Git pull release
+      run: git pull origin release 
 
     - name: Git push 
       run: git push -u origin release
