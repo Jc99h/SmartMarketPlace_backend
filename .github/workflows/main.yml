@@ -1,0 +1,26 @@
+name: Fast API docker build push
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  push_to_release_backend:
+    runs-on: ubuntu-latest
+    steps:
+    # Se hace este checkout para que podamos encontrar los archivos que tenemos en develop
+    - uses: actions/checkout@develop
+
+    # - name: Check tests status
+    #   run: python app/test_utils.py
+
+    - name: Git add
+      run: git add .
+      
+    - name: Git commit
+      run: git commit -m "new release"
+
+    - name: Git push 
+      run: git push -u origin release
+  
