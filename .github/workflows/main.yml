@@ -17,23 +17,11 @@ jobs:
     - name: Git set repo url
       run: git remote set-url origin https://github.com/Daga2001/SmartMarketPlace_backend/
 
-    - name: Git create branch release locally
-      run: git branch release
-
-    - name: Git checkout release
-      run: git checkout release
-
     - name: Git config username
       run: git config user.email '${{secrets.GIT_EMAIL}}'
 
     - name: Git config password
       run: git config user.name '${{secrets.GIT_NAME}}'
-
-    - name: Git add
-      run: git add .
-      
-    - name: Git commit
-      run: git commit -m "new release"
 
     - name: Git push 
       run: git push -u origin release
