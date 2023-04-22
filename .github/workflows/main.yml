@@ -32,9 +32,9 @@ jobs:
     # - name: Git config pull
     #   run: git config pull.rebase true
 
-    - name: Git fetch release
-      run: git fetch origin release 
+    - name: Git pull release
+      run: git pull --rebase origin release 
 
     - name: Git push 
-      run: git push -u origin release
+      run: git push -f origin release
   
