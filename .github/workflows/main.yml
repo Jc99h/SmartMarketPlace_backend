@@ -14,6 +14,8 @@ jobs:
 
     # - name: Check tests status
     #   run: python app/test_utils.py
+    - name: Git set repo url
+      run: git remote add origin https://github.com/Daga2001/SmartMarketPlace_backend/
 
     - name: Git create branch release locally
       run: git branch release
