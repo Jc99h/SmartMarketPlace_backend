@@ -30,7 +30,7 @@ jobs:
       run: git config --global user.name '${{secrets.GIT_NAME}}'
 
     - name: Git pull release
-      run: git pull origin release 
+      run: git pull.rebase origin release 
 
     - name: Git push 
       run: git push -u origin release
