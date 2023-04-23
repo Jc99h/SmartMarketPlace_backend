@@ -34,11 +34,11 @@ jobs:
     - name: Git config password
       run: git config --global user.name '${{secrets.GIT_NAME}}'
 
-    - name: Git merge with develop
-      run: git merge test
-
     - name: Update test2
       run: git pull origin test2 --rebase
+
+    - name: Git merge with develop
+      run: git merge test
 
     - name: Git push 
       run: git push origin test2
