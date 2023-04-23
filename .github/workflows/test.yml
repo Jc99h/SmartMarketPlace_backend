@@ -34,8 +34,8 @@ jobs:
     - name: Git config password
       run: git config --global user.name '${{secrets.GIT_NAME}}'
 
-    # - name: Update test2
-    #   run: git pull origin test2 --rebase
+    - name: Update test2
+      run: git pull origin test2 --rebase --strategy-option=theirs
 
     - name: Git merge with develop
       run: git merge --strategy-option=theirs test
