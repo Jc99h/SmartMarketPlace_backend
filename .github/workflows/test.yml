@@ -31,7 +31,7 @@ jobs:
       run: git config --global user.name '${{secrets.GIT_NAME}}'
 
     - name: Git merge with develop
-      run: git merge develop
+      run: git merge test
 
     - name: Git push 
       run: git push origin test2
