@@ -10,18 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     # Se hace este checkout para que podamos encontrar los archivos que tenemos en develop
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
 
     # - name: Check tests status
     #   run: python app/test_utils.py
     - name: Git set repo url
       run: git remote set-url origin https://github.com/Daga2001/SmartMarketPlace_backend/
 
-    - name: Fetching remote develop branch
-      run: git branch develop origin/develop
-
-    - name: Git create branch main locally
-      run: git branch main
+    # - name: Git create branch main locally
+    #   run: git branch main
 
     - name: Git checkout main
       run: git checkout main 
