@@ -29,11 +29,8 @@ jobs:
     - name: Git config password
       run: git config --global user.name '${{secrets.GIT_NAME}}'
 
-    # - name: Git config pull
-    #   run: git config pull.rebase true
-
-    # - name: Git pull main
-    #   run: git pull --rebase origin main 
+    - name: Git merge with develop
+      run: git merge develop
 
     - name: Git push 
       run: git push origin main
