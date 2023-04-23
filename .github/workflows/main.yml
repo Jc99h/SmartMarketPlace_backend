@@ -17,6 +17,9 @@ jobs:
     - name: Git set repo url
       run: git remote set-url origin https://github.com/Daga2001/SmartMarketPlace_backend/
 
+    - name: Fetching remote develop branch
+      run: git branch develop origin/develop
+
     - name: Git create branch main locally
       run: git branch main
 
