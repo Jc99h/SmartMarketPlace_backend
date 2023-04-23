@@ -1,9 +1,9 @@
-name: Develop to main Workflow
+name: From backend to frontend
 on:
   push:
-    branches: [ develop ]
+    branches: [ main ]
   pull_request:
-    branches: [ develop ]
+    branches: [ main ]
 
 jobs:
   push_to_release_backend:
