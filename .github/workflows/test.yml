@@ -19,8 +19,8 @@ jobs:
       run: git remote set-url origin https://github.com/Daga2001/SmartMarketPlace_backend/
 
     # Actualiza la rama local de test a la última versión remota
-    - name: Update test branch
-      run: git pull origin test
+    # - name: Update test branch
+    #   run: git pull origin test
 
     - name: Git create branch test2 locally
       run: git branch test2
@@ -34,11 +34,11 @@ jobs:
     - name: Git config password
       run: git config --global user.name '${{secrets.GIT_NAME}}'
 
-    - name: Update test2
-      run: git pull origin test2 --rebase
+    # - name: Update test2
+    #   run: git pull origin test2 --rebase
 
     - name: Git merge with develop
-      run: git merge test
+      run: git merge --strategy-option=theirs test
 
     - name: Git push 
       run: git push origin test2
