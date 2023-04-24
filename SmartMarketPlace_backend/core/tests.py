@@ -38,6 +38,7 @@ class TestUserView(LiveServerTestCase):
         if os.environ.get('GITHUB_WORKFLOW'):
             self.selenium = webdriver.Chrome(
                 executable_path = './drivers/chromedriver_linux64.zip')
+            
         super().setUp()
 
     def tearDown(self):

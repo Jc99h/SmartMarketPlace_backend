@@ -55,4 +55,6 @@ jobs:
       run: python ./SmartMarketPlace_backend/manage.py runserver &
 
     - name: Run tests
-      run: python ./SmartMarketPlace_backend/manage.py test core
+      run: pytest --driver-path=$CHROMEDRIVER_PATH ./SmartMarketPlace_backend/manage.py test core
+      env:
+        CHROMEDRIVER_PATH: ./SmartMarketPlace_backend/SmartMarketPlace_backend/
