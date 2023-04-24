@@ -23,21 +23,22 @@ jobs:
           POSTGRES_PASSWORD: 123456
           POSTGRES_DB: smp_db
         ports:
-        - 5433:5433
+        - 5433:5432
 
     steps:
     - uses: actions/checkout@v3 
+
+    - name: Install PostgreSQL
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y postgresql postgresql-contrib
+        sudo systemctl start postgresql
+        sudo systemctl enable postgresql
 
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
-
-    - name: Install PostgreSQL Dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install postgresql-common=238
-        sudo apt-get -y install postgresql-client postgresql-server-dev-all
 
     - name: Install Dependencies
       run: |
