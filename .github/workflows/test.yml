@@ -28,7 +28,7 @@ jobs:
       run: git fetch
 
     - name: Fetching test branch from backend
-      run: git branch -b test origin/test
+      run: git branch test origin/test
 
     # - name: Git checkout test2
     #   run: git checkout test2
