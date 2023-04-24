@@ -16,8 +16,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
       with:
-        repository: SmartMarketPlace
-        ref: 'test'
+        repository: Daga2001/SmartMarketPlace
+        ref: 'test2'
         token:  ${{ secrets.FRONT_TOKEN }}
 
     - name: Git set repo url
