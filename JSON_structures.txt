@@ -1,0 +1,78 @@
+Para hacer un fetch correctamente asegurense de enviar un JSON con
+la siguiente estructura dependiendo de la URL:
+
+Recordar que cuando se quiera autenticar, hay que mandar un encabezado, un ejemplo
+de éste sería:
+{
+    Headers: {
+        Authorization: "Token 48035a755ec8f9b1eccfc6130f6d4cf034982a63"
+    }
+}
+
+------------------------------------------------------------------
+-- core/user/view
+------------------------------------------------------------------
+Simplemente se hace una solicitud GET.
+
+------------------------------------------------------------------
+-- mande/user/create
+------------------------------------------------------------------
+Metodo: POST
+Para crear un administrador:
+{
+    "tipo": "Admin",
+    "nombre": "admin",
+    "apellido": "Alberto",
+    "cedula": "123",
+    "email": "op33@a.com",
+    "password": "123",
+    "fecha_nacimiento": "1990-01-24",
+    "celular": "123",
+    "direccion": "cl 10 #10-10"
+}
+
+Metodo: POST
+Para crear un trabajador:
+{
+    "tipo": "Worker",
+    "nombre": "admin",
+    "apellido": "Alberto",
+    "cedula": "123",
+    "email": "op33@a.com",
+    "password": "123",
+    "fecha_nacimiento": "1990-01-24",
+    "celular": "123",
+    "direccion": "cl 10 #10-10"
+}
+
+------------------------------------------------------------------
+-- core/user/client/update/<id_trabajador>/
+------------------------------------------------------------------
+Se debe estar autenticado como Admin.
+
+Metodo: GET
+Para obtener los datos de un trabajador simplemente se reemplaza el id,
+en la etiqueta <id_trabajador>.
+
+Para actualizar los datos de un trabajador:
+Metodo: PUT
+{
+    "nombre": "admin2",
+    "apellido": "Alberto",
+    "cedula": "123",
+    "email": "op33@a.com",
+    "password": "123",
+    "fecha_nacimiento": "1990-01-24",
+    "celular": "123",
+    "direccion": "cl 10 #10-10"
+}
+
+------------------------------------------------------------------
+-- mande/user/login
+------------------------------------------------------------------
+Metodo: POST
+Para logearse como admin o trabajador:
+{
+    "email": "op33@a.com",
+    "password": "123"
+}
