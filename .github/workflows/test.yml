@@ -55,6 +55,6 @@ jobs:
         echo "Git config user: $(git config user.name), $(git config user.email)"
 
     - name: Git push 
-      run: git push origin HEAD:refs/heads/test2 --force-with-lease
+      run: git push origin test2 --force-with-lease
       env:
         FRONT_TOKEN: ${{ secrets.FRONT_TOKEN }}
