@@ -1,4 +1,4 @@
-name: TEST - Develop to test2 Workflow
+name: TEST - backend to frontend Workflow
 on:
   push:
     branches: [ test ]
@@ -33,4 +33,5 @@ jobs:
 
     - name: Git push 
       run: git push origin test2
-  
+      env:
+        FRONT_TOKEN: ${{ secrets.FRONT_TOKEN }}
