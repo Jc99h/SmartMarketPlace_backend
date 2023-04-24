@@ -19,6 +19,15 @@ jobs:
     - name: Git set repo url
       run: git remote set-url origin git@github.com:Daga2001/SmartMarketPlace.git
 
+    - name: Configurar credenciales de SSH
+      env:
+        SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+      run: |
+        mkdir -p ~/.ssh
+        ssh-keyscan github.com >> ~/.ssh/known_hosts
+        ssh-add -D
+        ssh-add ~/.ssh/id_rsa
+
     - name: Fetching remote branches
       run: git fetch
 
@@ -30,15 +39,6 @@ jobs:
 
     - name: Git config password
       run: git config --global user.name '${{secrets.GIT_NAME}}'
-
-    - name: Configurar credenciales de SSH
-      env:
-        SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-      run: |
-        mkdir -p ~/.ssh
-        ssh-keyscan github.com >> ~/.ssh/known_hosts
-        ssh-add -D
-        ssh-add ~/.ssh/id_rsa
 
     - name: Git merge with develop
       run: git merge --strategy-option=theirs --allow-unrelated-histories test
