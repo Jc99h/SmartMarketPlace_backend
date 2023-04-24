@@ -7,10 +7,9 @@ on:
     branches: [ test ]
 
 jobs:
-  build:
+  run_django_tests:
 
     runs-on: ubuntu-latest
-
     strategy:
       max-parallel: 4
       matrix:
