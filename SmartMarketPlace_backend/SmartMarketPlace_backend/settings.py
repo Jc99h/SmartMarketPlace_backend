@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'SmartMarketPlace_backend.urls'
@@ -81,8 +82,8 @@ DATABASES = {
         'ENGINE':'django.db.backends.postgresql_psycopg2',  # database driver for mysql on django
         'NAME': 'smp_db',  # database name
         'USER': 'postgres',  # database user
-        'PORT': '5433',  # database port
-        'PASSWORD': '123456'  # database password
+        'PORT': '5432',  # database port
+        'PASSWORD': 'pg123'  # database password
     }
 }
 
@@ -129,3 +130,10 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'core.User'
+
+# White listing the localhost:3000 port
+# for React
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
+    'http://127.0.0.1:5173/login',
+)
