@@ -5,8 +5,9 @@ from core.models import User
 import json
 import requests
 import time
+import os
 from selenium import webdriver
-
+from selenium.webdriver.chrome.options import Options
 
 # Create your tests
 
@@ -31,8 +32,16 @@ class TestUserView(LiveServerTestCase):
         print("Testing this url:",self.url)
 
         # Inicializa el driver de Selenium
+        options = Options()
+        options.headless = True
         self.selenium = webdriver.Chrome(
-            executable_path = './drivers/chromedriver.exe')
+            executable_path = './drivers/chromedriver_win32.zip',
+            options=options)
+        
+        if os.environ.get('GITHUB_WORKFLOW'):
+            self.selenium = webdriver.Chrome('./drivers/chromedriver_linux64.zip',
+            options=options)
+            
         super().setUp()
 
     def tearDown(self):
