@@ -20,7 +20,7 @@ jobs:
         ref: 'test2'
         token:  ${{ secrets.FRONT_TOKEN }}
 
-    - name: Git set repo url
+    - name: Git set repo url backend
       run: |
         git remote set-url origin https://github.com/Daga2001/SmartMarketPlace_backend
 
@@ -41,6 +41,10 @@ jobs:
 
     - name: Git merge with develop
       run: git merge --strategy-option=theirs --allow-unrelated-histories test
+
+    - name: Git set repo url frontend
+      run: |
+        git remote set-url origin https://github.com/Daga2001/SmartMarketPlace
 
     - name: Debug 
       run: |
