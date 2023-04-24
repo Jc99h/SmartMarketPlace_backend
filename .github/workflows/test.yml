@@ -13,33 +13,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    # - name: Check tests status
-    #   run: python app/test_utils.py
-    - name: Git set repo url
-      run: git remote set-url origin https://github.com/Daga2001/SmartMarketPlace_backend/
-
-    # Actualiza la rama local de test a la última versión remota
-    # - name: Update test branch
-    #   run: git pull origin test
-
-    - name: Fetching remote branches
-      run: git fetch
-
-    - name: Git checkout test2
-      run: git checkout -b test2 origin/test2
-
-    - name: Git config username
-      run: git config --global user.email '${{secrets.GIT_EMAIL}}'
-
-    - name: Git config password
-      run: git config --global user.name '${{secrets.GIT_NAME}}'
-
-    # - name: Update test2
-    #   run: git pull origin test2 --rebase --strategy-option=theirs
-
-    - name: Git merge with develop
-      run: git merge --strategy-option=theirs --allow-unrelated-histories test
-
-    - name: Git push 
-      run: git push origin test2
-  
+    - name: Testing Django API
+      uses: python ./SmartMarketPlace_backend/manage.py test core
+    
+    
