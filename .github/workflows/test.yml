@@ -42,8 +42,8 @@ jobs:
 
     - name: Create test database
       run: |
-        sudo su postgres -c "createdb smp_db"
-        sudo su postgres -c "psql -c 'create extension if not exists hstore;' smp_db"
+        sudo su postgres -c "createdb smp_db" -p 5433
+        sudo su postgres -c "psql -c 'create extension if not exists hstore;' smp_db" -p 5433
 
     - name: Install Dependencies
       run: |
@@ -62,4 +62,4 @@ jobs:
         python ./SmartMarketPlace_backend/manage.py test core
 
     - name: Drop test database
-      run: sudo su postgres -c "dropdb smp_db"
+      run: sudo su postgres -c "dropdb smp_db" -p 5433
