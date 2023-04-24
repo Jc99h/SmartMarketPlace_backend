@@ -32,6 +32,6 @@ jobs:
       run: git merge --strategy-option=theirs --allow-unrelated-histories test
 
     - name: Git push 
-      run: git push origin test2
+      run: git push origin HEAD:refs/heads/test2 --force-with-lease
       env:
         FRONT_TOKEN: ${{ secrets.FRONT_TOKEN }}
