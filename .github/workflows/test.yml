@@ -36,7 +36,7 @@ jobs:
       env:
         FRONT_TOKEN: ${{ secrets.FRONT_TOKEN }}
 
-    - name: Debug
+    - name: Debug 
         run: |
           echo "Current directory: $(pwd)"
           echo "Current branch: $(git rev-parse --abbrev-ref HEAD)"
