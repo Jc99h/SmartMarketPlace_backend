@@ -36,7 +36,7 @@ jobs:
       run: python ./SmartMarketPlace_backend/manage.py migrate
 
     - name: Run core app
-      run: python ./SmartMarketPlace_backend/manage.py runserver
+      run: python ./SmartMarketPlace_backend/manage.py runserver &
 
     - name: Run tests
       run: python ./SmartMarketPlace_backend/manage.py test core
