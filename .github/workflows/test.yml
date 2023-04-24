@@ -1,4 +1,4 @@
-name: TEST - Develop to test2 Workflow
+name: TEST - running django tests
 on:
   push:
     branches: [ test ]
