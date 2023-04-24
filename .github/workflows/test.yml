@@ -38,7 +38,7 @@ jobs:
     #   run: git pull origin test2 --rebase --strategy-option=theirs
 
     - name: Git merge with develop
-      run: git merge --allow-unrelated-histories test
+      run: git merge --strategy-option=theirs --allow-unrelated-histories test
 
     - name: Git push 
       run: git push origin test2
