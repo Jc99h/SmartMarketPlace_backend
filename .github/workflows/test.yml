@@ -23,7 +23,7 @@ jobs:
           POSTGRES_PASSWORD: 123456
           POSTGRES_DB: smp_db
         ports:
-        - 5433:5433
+        - 5433:5432
 
     steps:
     - uses: actions/checkout@v3 
