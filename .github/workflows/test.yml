@@ -13,23 +13,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     # Se hace este checkout para que podamos encontrar los archivos que tenemos en develop
-    - name: Checkout
+    - name: Checkout from front-end
       uses: actions/checkout@v3
-      # with:
-      #   repository: SmartMarketPlace
-      #   ref: 'test'
-      #   token:  ${{ secrets.FRONT_TOKEN }}
+      with:
+        repository: SmartMarketPlace
+        ref: 'test2'
+        token:  ${{ secrets.FRONT_TOKEN }}
 
     - name: Git set repo url
       run: |
-        git config --unset-all http.https://github.com/.extraheader
-        git remote set-url origin https://github.com/Daga2001/SmartMarketPlace
+        git remote set-url origin https://github.com/Daga2001/SmartMarketPlace_backend
 
-    - name: Fetching remote branches
+    - name: Fetching remote branches from backend
       run: git fetch
 
-    - name: Git checkout test2
-      run: git checkout -b test2 origin/test2
+    - name: Fetching test branch from backend
+      run: git branch -b test origin/test
+
+    # - name: Git checkout test2
+    #   run: git checkout test2
 
     - name: Git config username
       run: git config --global user.email '${{secrets.GIT_EMAIL}}'
