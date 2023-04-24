@@ -36,6 +36,8 @@ jobs:
     - name: Install PostgreSQL Dependencies
       run: |
         sudo apt-get update
+        sudo apt-get remove postgresql-common
+        sudo apt-get install postgresql-common=238
         sudo apt-get -y install postgresql-client postgresql-server-dev-all
 
     - name: Install Dependencies
