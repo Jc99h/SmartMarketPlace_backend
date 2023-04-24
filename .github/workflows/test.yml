@@ -7,7 +7,7 @@ on:
     branches: [ test ]
 
 jobs:
-  run_django_tests:
+  run_django_tests: 
 
     runs-on: ubuntu-latest
     strategy:
@@ -38,7 +38,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-     - name: Create test database
+    - name: Create test database
       run: createdb smp_db -U postgres -h localhost -p 5433
 
     - name: Run migrations
