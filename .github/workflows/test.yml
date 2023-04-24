@@ -23,7 +23,6 @@ jobs:
     - name: Git set repo url
       run: |
         git remote set-url origin https://github.com/Daga2001/SmartMarketPlace
-        git config -l | grep 'http\..*\.extraheader' | cut -d= -f1 | \ xargs -L1 git config --unset-all
 
     - name: Fetching remote branches
       run: git fetch
