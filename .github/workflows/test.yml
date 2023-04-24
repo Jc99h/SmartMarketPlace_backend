@@ -22,8 +22,8 @@ jobs:
 
     - name: Git set repo url
       run: |
-        git remote set-url origin https://github.com/Daga2001/SmartMarketPlace
         git config --unset-all http.https://github.com/.extraheader
+        git remote set-url origin https://github.com/Daga2001/SmartMarketPlace
 
     - name: Fetching remote branches
       run: git fetch
