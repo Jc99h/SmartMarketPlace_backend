@@ -22,11 +22,11 @@ jobs:
     # - name: Update test branch
     #   run: git pull origin test
 
-    - name: Git create branch test2 locally
-      run: git branch test2
+    - name: Fetching remote branches
+      run: git fetch
 
     - name: Git checkout test2
-      run: git checkout test2 
+      run: git checkout test2 origin/test2
 
     - name: Git config username
       run: git config --global user.email '${{secrets.GIT_EMAIL}}'
@@ -34,8 +34,8 @@ jobs:
     - name: Git config password
       run: git config --global user.name '${{secrets.GIT_NAME}}'
 
-    - name: Update test2
-      run: git pull origin test2 --rebase --strategy-option=theirs
+    # - name: Update test2
+    #   run: git pull origin test2 --rebase --strategy-option=theirs
 
     - name: Git merge with develop
       run: git rebase --strategy-option=theirs test
