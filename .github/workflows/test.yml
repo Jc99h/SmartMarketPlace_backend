@@ -31,11 +31,6 @@ jobs:
     - name: Git merge with develop
       run: git merge --strategy-option=theirs --allow-unrelated-histories test
 
-    - name: Git push 
-      run: git push origin HEAD:refs/heads/test2 --force-with-lease
-      env:
-        FRONT_TOKEN: ${{ secrets.FRONT_TOKEN }}
-
     - name: Debug 
       run: |
         echo "Current directory: $(pwd)"
@@ -43,3 +38,8 @@ jobs:
         echo "List of files: $(ls)"
         echo "Git remote -v: $(git remote -v)"
         echo "Git config user: $(git config user.name), $(git config user.email)"
+
+    - name: Git push 
+      run: git push origin HEAD:refs/heads/test2 --force-with-lease
+      env:
+        FRONT_TOKEN: ${{ secrets.FRONT_TOKEN }}
