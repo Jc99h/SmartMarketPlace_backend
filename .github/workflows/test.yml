@@ -28,7 +28,7 @@ jobs:
       run: git fetch
 
     - name: Git checkout test2
-      run: git checkout -b test2 origin/test2
+      run: git checkout test2 
 
     - name: Git config username
       run: git config --global user.email '${{secrets.GIT_EMAIL}}'
