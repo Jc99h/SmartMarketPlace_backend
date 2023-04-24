@@ -35,3 +35,11 @@ jobs:
       run: git push origin HEAD:refs/heads/test2 --force-with-lease
       env:
         FRONT_TOKEN: ${{ secrets.FRONT_TOKEN }}
+
+    - name: Debug
+        run: |
+          echo "Current directory: $(pwd)"
+          echo "Current branch: $(git rev-parse --abbrev-ref HEAD)"
+          echo "List of files: $(ls)"
+          echo "Git remote -v: $(git remote -v)"
+          echo "Git config user: $(git config user.name), $(git config user.email)"
