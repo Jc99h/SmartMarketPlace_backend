@@ -5,9 +5,10 @@ on:
     branches: [ test ]
   pull_request:
     branches: [ test ]
-
-permissions:
-  contents: write
+  workflow_dispatch:
+    branches: [ test ]
+    permissions:
+      contents: write
 
 jobs: 
   push_to_test2_backend:
