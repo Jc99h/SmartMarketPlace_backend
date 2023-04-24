@@ -14,21 +14,22 @@ jobs:
     steps:
     # Se hace este checkout para que podamos encontrar los archivos que tenemos en develop
     - name: Checkout
-      uses: actions/checkout@v3
-      with:
-        repository: Daga2001/SmartMarketPlace
-        ref: 'test2'
-        token:  ${{ secrets.FRONT_TOKEN }}
+      # uses: actions/checkout@v3
+      # with:
+      #   repository: SmartMarketPlace
+      #   ref: 'test'
+      #   token:  ${{ secrets.FRONT_TOKEN }}
 
     - name: Git set repo url
       run: |
         git remote set-url origin https://github.com/Daga2001/SmartMarketPlace
+        git config --unset-all http.https://github.com/.extraheader
 
     - name: Fetching remote branches
       run: git fetch
 
     - name: Git checkout test2
-      run: git checkout test2 
+      run: git checkout -b test2 origin/test2
 
     - name: Git config username
       run: git config --global user.email '${{secrets.GIT_EMAIL}}'
