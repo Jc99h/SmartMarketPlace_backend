@@ -1,42 +1,36 @@
-name: Python application
-
-on: [push]
+name: TEST - Develop to test2 Workflow
+on:
+  push:
+    branches: [ test ]
+  pull_request:
+    branches: [ test ]
 
 jobs:
-  build:
-
+  push_to_test2_backend:
     runs-on: ubuntu-latest
-
-    services:
-      postgres:
-        image: postgres:latest
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: github_actions
-        ports:
-          - 5432:5432
-        # needed because the postgres container does not provide a healthcheck
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python 3.9
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.9
+    # Se hace este checkout para que podamos encontrar los archivos que tenemos en develop
+    - name: Checkout
+      uses: actions/checkout@v3
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install pytest-django
+    - name: Git set repo url
+      run: git remote set-url origin https://github.com/Daga2001/SmartMarketPlace/
 
-    - name: Run migrations
-      run: python ./SmartMarketPlace_backend/manage.py migrate
+    - name: Fetching remote branches
+      run: git fetch
 
-    - name: Run core app
-      run: python ./SmartMarketPlace_backend/manage.py runserver &
+    - name: Git checkout test2
+      run: git checkout -b test2 origin/test2
 
-    - name: Run tests
-      run: python ./SmartMarketPlace_backend/manage.py test core
+    - name: Git config username
+      run: git config --global user.email '${{secrets.GIT_EMAIL}}'
+
+    - name: Git config password
+      run: git config --global user.name '${{secrets.GIT_NAME}}'
+
+    - name: Git merge with develop
+      run: git merge --strategy-option=theirs --allow-unrelated-histories test
+
+    - name: Git push 
+      run: git push origin test2
+  
