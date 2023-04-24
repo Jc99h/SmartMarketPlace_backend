@@ -1,4 +1,4 @@
-name: TEST - running django tests
+name: TEST - running django tests 
 on:
   push:
     branches: [ test ]
