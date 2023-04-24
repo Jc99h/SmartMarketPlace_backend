@@ -15,6 +15,10 @@ jobs:
     # Se hace este checkout para que podamos encontrar los archivos que tenemos en develop
     - name: Checkout
       uses: actions/checkout@v3
+      with:
+        repository: SmartMarketPlace
+        ref: 'test'
+        token:  ${{ secrets.FRONT_TOKEN }}
 
     - name: Git set repo url
       run: |
