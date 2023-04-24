@@ -52,8 +52,8 @@ jobs:
     
     - name: Run migrations
       run: |
-      python ./SmartMarketPlace_backend/manage.py makemigrations --database=smp_db
-      python ./SmartMarketPlace_backend/manage.py migrate --database=smp_db
+        python ./SmartMarketPlace_backend/manage.py makemigrations --database=smp_db
+        python ./SmartMarketPlace_backend/manage.py migrate --database=smp_db
 
     - name: Run tests
       run: python ./SmartMarketPlace_backend/manage.py test --database=smp_db
