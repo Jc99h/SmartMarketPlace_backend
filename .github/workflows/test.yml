@@ -31,6 +31,6 @@ jobs:
         pip install -r requirements.txt
         pip install pytest-django
     - name: Run migrations
-      run: python manage.py migrate
+      run: python ./SmartMarketPlace_backend/manage.py migrate
     - name: Run tests
       run: py.test
