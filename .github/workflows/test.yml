@@ -52,10 +52,10 @@ jobs:
     
     - name: Run migrations
       run: |
-        python ./SmartMarketPlace_backend/manage.py migrate --database=smp_db
+        python ./SmartMarketPlace_backend/manage.py migrate
 
     - name: Run tests
-      run: python ./SmartMarketPlace_backend/manage.py test --database=smp_db
+      run: python ./SmartMarketPlace_backend/manage.py test
 
     - name: Run Tests
       run: |
