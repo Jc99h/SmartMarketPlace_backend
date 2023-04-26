@@ -23,7 +23,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import hashlib
 
-# Create your views here.
+# Create your views here. 
 
 # Crea un usuario en la BD
 class CreateUserView(generics.CreateAPIView):

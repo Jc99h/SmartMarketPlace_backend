@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-jc!gkj#q_0ki35-y=^^n3^_nj1nb!a1))swb)7njdk$5ok%6pm'
+SECRET_KEY = str(os.getenv('DJANGO_SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'SmartMarketPlace_backend.urls'
@@ -81,8 +83,8 @@ DATABASES = {
         'ENGINE':'django.db.backends.postgresql_psycopg2',  # database driver for mysql on django
         'NAME': 'smp_db',  # database name
         'USER': 'postgres',  # database user
-        'PORT': '5433',  # database port
-        'PASSWORD': '123456'  # database password
+        'PORT': '5432',  # database port
+        'PASSWORD': 'pg123'  # database password
     }
 }
 
@@ -129,3 +131,10 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'core.User'
+##
+# White listing the localhost:3000 port
+# for React
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
+    'http://127.0.0.1:5173/login',
+)
