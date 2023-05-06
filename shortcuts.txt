@@ -1,0 +1,6 @@
+python ./SmartMarketPlace_backend/manage.py makemigrations
+python ./SmartMarketPlace_backend/manage.py migrate
+python ./SmartMarketPlace_backend/manage.py runserver
+python ./SmartMarketPlace_backend/manage.py test core.tests 1> test.txt 2> test_err.txt
+
+../venv/scripts/activate

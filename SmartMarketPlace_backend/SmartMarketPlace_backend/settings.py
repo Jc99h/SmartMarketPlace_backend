@@ -83,8 +83,8 @@ DATABASES = {
         'ENGINE':'django.db.backends.postgresql_psycopg2',  # database driver for mysql on django
         'NAME': 'smp_db',  # database name
         'USER': 'postgres',  # database user
-        'PORT': '5432',  # database port
-        'PASSWORD': 'pg123'  # database password
+        'PORT': '5433',  # database port
+        'PASSWORD': '123456'  # database password
     }
 }
 

@@ -1,0 +1,60 @@
+name: TEST - backend to frontend Workflow
+
+on:
+  push:
+    branches: [ test ]
+  pull_request:
+    branches: [ test ]
+
+permissions: write-all
+
+jobs: 
+  push_to_test2_backend:
+    runs-on: ubuntu-latest
+    steps:
+    # Se hace este checkout para que podamos encontrar los archivos que tenemos en develop
+    - name: Checkout from front-end
+      uses: actions/checkout@v3
+      with:
+        repository: Daga2001/SmartMarketPlace
+        ref: 'test2'
+        token:  ${{ secrets.FRONT_TOKEN }}
+
+    - name: Git set repo url backend
+      run: |
+        git remote set-url origin https://github.com/Daga2001/SmartMarketPlace_backend
+
+    - name: Fetching remote branches from backend
+      run: git fetch
+
+    - name: Fetching test branch from backend
+      run: git branch test origin/test
+
+    # - name: Git checkout test2
+    #   run: git checkout test2
+
+    - name: Git config username
+      run: git config --global user.email '${{secrets.GIT_EMAIL}}'
+
+    - name: Git config password
+      run: git config --global user.name '${{secrets.GIT_NAME}}'
+
+    - name: Git merge with develop
+      run: git merge --strategy-option=theirs --allow-unrelated-histories test
+
+    - name: Git set repo url frontend
+      run: |
+        git remote set-url origin https://github.com/Daga2001/SmartMarketPlace
+
+    - name: Debug 
+      run: |
+        echo "Current directory: $(pwd)"
+        echo "Current branch: $(git rev-parse --abbrev-ref HEAD)"
+        echo "List of files: $(ls)"
+        echo "Git remote -v: $(git remote -v)"
+        echo "Git config user: $(git config user.name), $(git config user.email)"
+
+    - name: Git push 
+      run: git push origin -f test2 --force-with-lease
+      env:
+        FRONT_TOKEN: ${{ secrets.FRONT_TOKEN }}
